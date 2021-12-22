@@ -1,30 +1,33 @@
 {
-  "name": "module",
-  "title": "New Module",
-  "description": "",
+  "name": "obligatory-fishing-minigame",
+  "title": "🎣 Obligatory Fishing Minigame",
+  "description": "Every game has one.",
   "version": "This is auto replaced",
   "library": "false",
   "manifestPlusVersion": "1.0.0",
-  "minimumCoreVersion": "0.8.8",
-  "compatibleCoreVersion": "0.8.8",
+  "minimumCoreVersion": "9",
+  "compatibleCoreVersion": "9",
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "Cody Swendrowski",
+      "discord": "cswendrowski#9701",
+      "patreon": "ironmoose"
     }
   ],
-  "dependencies": [
-
-  ],
-  "conflicts": [
-    
-  ],
+  "dependencies": [{
+    "name": "dlopen",
+    "type": "module",
+    "manifest": "https://raw.githubusercontent.com/ForgeVTT/fvtt-module-dlopen/master/module.json"
+  },
+  {
+    "name": "vueport",
+    "type": "module",
+    "manifest": "https://raw.githubusercontent.com/ForgeVTT/fvtt-module-vueport/master/module.json"
+  }],
   "esmodules": [
     "/scripts/module.js"
   ],
   "scripts": [
-    "/scripts/lib/lib.js"
   ],
   "styles": [
     "/styles/module.css"
