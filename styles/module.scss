@@ -1,0 +1,241 @@
+.fishing-ui {
+  .dialog-buttons {
+    display: none;
+  }
+
+  .window-app {
+    width: 150px !important;
+  }
+
+  .window-content {
+    background: none !important;
+  }
+
+  .fishing {
+    position: absolute;
+    width: 121px;
+    height: 500px;
+    border-radius: 10px;
+  }
+  .fishing .rod {
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .fishing .rod:before {
+    content: "";
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgb(173, 181, 189);
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(173, 181, 189, 1) 25px,
+                    rgba(108, 117, 125, 1) 50px,
+                    rgba(173, 181, 189, 1) 75px
+    );
+    border: 1px solid #212529;
+    border-radius: 5px;
+  }
+  .fishing .rod:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 8px;
+    height: 50px;
+    background: rgb(205, 152, 121);
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(247, 127, 0, 1) 0px,
+                    rgba(247, 127, 0, 1) 2px,
+                    rgba(158, 92, 66, 1) 4px,
+                    rgba(247, 127, 0, 1) 6px,
+                    rgba(247, 127, 0, 1) 9px
+    );
+    border: 2px solid #9e5c42;
+    bottom: -3px;
+    right: -3px;
+    border-radius: 5px;
+    box-shadow: -3px 4px 14px -4px, inset 2px -2px rgba(0, 0, 0, 0.2);
+  }
+  .fishing .rod .reel {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background: rgb(171, 77, 11);
+    background: linear-gradient(
+                    28deg,
+                    rgba(171, 77, 11, 1) 0%,
+                    rgba(255, 157, 88, 1) 100%
+    );
+    bottom: 30px;
+    z-index: 2;
+    box-shadow: -3px 4px 14px -4px, inset 2px -2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #67300a;
+  }
+  .fishing .rod .reel .handle {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    border: 1px solid black;
+    top: -9px;
+    right: 9px;
+    background: rgb(173, 181, 189);
+    background: linear-gradient(
+                    0deg,
+                    rgba(173, 181, 189, 1) 0%,
+                    rgba(108, 117, 125, 1) 81%,
+                    rgba(164, 22, 26, 1) 86%,
+                    rgba(164, 22, 26, 1) 100%
+    );
+    border-radius: 3px;
+    transform-origin: bottom;
+    animation-name: reelin;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+  }
+  @keyframes reelin {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  .fishing .rod .reel .handle.reelin {
+    animation-play-state: running;
+  }
+  .fishing .rod .reel .handle.reelout {
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+    animation-play-state: running;
+  }
+  .fishing .sea {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    background: rgb(247, 127, 0);
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(247, 127, 0, 1) 0px,
+                    rgba(247, 127, 0, 1) 50px,
+                    rgba(255, 166, 73, 1) 52px,
+                    rgba(119, 73, 54, 1) 56px,
+                    rgba(119, 73, 54, 1) 57px,
+                    rgba(247, 127, 0, 1) 61px,
+                    rgba(247, 127, 0, 1) 100px
+    );
+    left: 30px;
+    border-radius: 10px;
+    border: 2px solid #774936;
+    box-shadow: inset -2px -2px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .fishing .sea:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 100%;
+    background: repeating-linear-gradient(
+                    0deg,
+                    rgba(255, 255, 255, 0) 0px,
+                    rgba(255, 255, 255, 0) 5px,
+                    rgba(86, 85, 84, 1) 6px,
+                    rgba(19, 21, 21, 1) 9px,
+                    rgba(86, 85, 84, 1) 9px,
+                    rgba(255, 255, 255, 0) 11px,
+                    rgba(255, 255, 255, 0) 34px
+    );
+    top: 0;
+    left: -12px;
+    z-index: -1;
+  }
+  .fishing .sea .area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(142, 202, 230);
+    background: linear-gradient(
+                    180deg,
+                    rgba(142, 202, 230, 1) 0%,
+                    rgba(33, 158, 188, 1) 100%
+    );
+    box-shadow: inset -3px 3px rgba(0, 0, 0, 0.3);
+    border: 2px solid #774936;
+    box-sizing: border-box;
+  }
+  .fishing .sea .fish {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+    color: #264653;
+    text-shadow: 1px 1px #2a9d8f;
+  }
+  .fishing .sea .bait {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 0%;
+    left: 0;
+    background: #beee62;
+    border-radius: 10px;
+    box-shadow: inset 0 0 1px 3px #70ae6e;
+  }
+  .fishing .progress {
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    border: 2px solid #9e5c42;
+    background: #e36414;
+    right: 0;
+    top: 0;
+    border-radius: 10px;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  .fishing .progress .area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgb(115, 57, 56);
+    background: linear-gradient(
+                    90deg,
+                    rgba(115, 57, 56, 1) 0%,
+                    rgba(158, 92, 66, 1) 2%,
+                    rgba(111, 59, 46, 1) 36%,
+                    rgba(115, 57, 56, 1) 96%,
+                    rgba(74, 34, 33, 1) 100%
+    );
+    border-radius: 10px;
+    box-shadow: inset 3px 3px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+  .fishing .progress .bar {
+    position: absolute;
+    width: 100%;
+    height: 2%;
+    background: #beee62;
+    bottom: 0;
+    box-shadow: inset 2px -2px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 10px 10px;
+  }
+  .holdButtonProgress {
+    display: none;
+  }
+}

@@ -30,7 +30,7 @@
   "scripts": [
   ],
   "styles": [
-    "/styles/module.css"
+    "/css/module.css"
   ],
   "languages": [
     {
