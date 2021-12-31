@@ -13,8 +13,6 @@ export function log(force, ...args) {
 }
 
 Hooks.once('init', async function() {
-  FishingUi.init();
-
   game.keybindings.register(moduleName, "reel", {
     name: "Reel in",
     hint: "Tap or hold",

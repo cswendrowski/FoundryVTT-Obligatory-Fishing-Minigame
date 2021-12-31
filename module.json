@@ -14,16 +14,7 @@
       "patreon": "ironmoose"
     }
   ],
-  "dependencies": [{
-    "name": "dlopen",
-    "type": "module",
-    "manifest": "https://raw.githubusercontent.com/ForgeVTT/fvtt-module-dlopen/master/module.json"
-  },
-  {
-    "name": "vueport",
-    "type": "module",
-    "manifest": "https://raw.githubusercontent.com/ForgeVTT/fvtt-module-vueport/master/module.json"
-  }],
+  "dependencies": [],
   "esmodules": [
     "/scripts/module.js"
   ],
