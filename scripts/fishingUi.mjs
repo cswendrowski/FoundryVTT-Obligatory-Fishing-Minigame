@@ -202,7 +202,7 @@ class FishingApplication extends Application {
 
   /* -------------------------------------------- */
   fishCaught() {
-    ui.notification.info("Fish Caught!");
+    ui.notifications.info("Fish Caught!");
     this.reset();
   }
 }
