@@ -1,0 +1,124 @@
+<form class="flexcol" autocomplete="off" onsubmit="event.preventDefault();">
+
+    <!-- Sheet Navigation Tabs -->
+    <nav class="sheet-tabs tabs">
+        <a class="item" data-tab="main">
+            <i class="fas fa-cog"></i> {{ localize "stairways.ui.config.tab-main" }}
+        </a>
+        <a class="item" data-tab="label"><i class="fas fa-font"></i> {{ localize "stairways.ui.config.tab-label" }}</a>
+        <a class="item" data-tab="position">
+            <i class="fas fa-map-marker-alt"></i> {{ localize "stairways.ui.config.tab-position" }}
+        </a>
+    </nav>
+
+    <!-- Main Tab -->
+    <div class="tab" data-tab="main">
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.status" }}</label>
+            <p style="flex: 3; padding: 1px 5px; background-color: {{ status.color.config }}">{{ localize status.name }}
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.scene" }}</label>
+            <select name="scene">
+                {{ selectOptions scenes selected=data.scene }}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.name" }}</label>
+            <input type="text" name="name" value="{{ data.name }}" data-dtype="String" />
+            <p class="hint">{{ localize "stairways.ui.config.name-hint" }}</p>
+            <p class="hint">{{ localize "stairways.ui.config.name-warning" }}</p>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.icon" }}</label>
+            <div class="form-fields">
+                {{#each icons}}
+                    <img src="{{ @key }}" class="select-icon" title="{{ this }}" height="32" width="32"
+                         style="background-color: rgba(0, 0, 0, 0.4); cursor: pointer;" />
+                {{/each}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label></label>
+            <div class="form-fields">
+                {{ filePicker target="icon" type="image" }}
+                <input class="image" type="text" name="icon" placeholder="modules/stairways/icons/stairway.svg"
+                       value="{{ data.icon }}" />
+            </div>
+        </div>
+
+        <div class="form-group slim">
+            <label>{{ localize "TOKEN.Dimensions" }} <span class="units">({{ localize "GridUnits" }})</span></label>
+            <div class="form-fields">
+                <label>{{ localize "Width" }}</label>
+                <input type="number" step="0.1" name="width" placeholder="units" value="{{ data.width }}" />
+                <label>{{ localize "Height" }}</label>
+                <input type="number" step="0.1" name="height" placeholder="units" value="{{ data.height }}" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.disabled" }}</label>
+            <input type="checkbox" name="disabled" data-dtype="Boolean" {{ checked data.disabled }} />
+        </div>
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.hidden" }}</label>
+            <input type="checkbox" name="hidden" data-dtype="Boolean" {{ checked data.hidden }} />
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.animate" }}</label>
+            <input type="checkbox" name="animate" data-dtype="Boolean" {{ checked data.animate }} />
+            <p class="hint">{{ localize "stairways.ui.config.animate-hint-1" }}</p>
+            <p class="hint">{{ localize "stairways.ui.config.animate-hint-2" }}</p>
+        </div>
+    </div>
+
+    <!-- Label Tab -->
+    <div class="tab" data-tab="label">
+        {{#if data.scene}}
+            <div class="form-group">
+                <label>{{ localize "stairways.ui.config.partner-scene-label" }}</label>
+                <input type="checkbox" name="partnerSceneLabel" data-dtype="Boolean" {{ checked data.partnerSceneLabel }} />
+            </div>
+        {{/if}}
+
+        <div class="form-group">
+            <label>{{ localize "stairways.ui.config.label" }}</label>
+            <input type="text" name="label" value="{{ data.label }}" data-dtype="String" />
+        </div>
+
+        <div class="form-group">
+            <label for="fontFamily">{{ localize "stairways.ui.config.font-family" }}</label>
+            <select name="fontFamily">
+                {{ selectOptions fontFamilies selected=data.fontFamily }}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fontSize">{{ localize "stairways.ui.config.font-size" }}</label>
+            <input type="text" name="fontSize" value="{{ data.fontSize }}" data-dtype="Number" />
+        </div>
+
+        <div class="form-group">
+            <label for="textColor">{{ localize "stairways.ui.config.text-color" }}</label>
+            <input class="color" type="text" name="textColor" value="{{ data.textColor }}" />
+            <input type="color" value="{{ data.textColor }}" data-edit="textColor" />
+        </div>
+    </div>
+
+    <!-- Sheet Footer -->
+    <footer class="sheet-footer flexrow">
+        <button type="button" name="resetDefault">
+            <i class="fas fa-undo"></i> Reset
+        </button>
+        <button type="submit" name="submit" value="1"><i class="far fa-save"></i> {{ localize submitText }}</button>
+    </footer>
+</form>

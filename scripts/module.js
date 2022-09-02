@@ -1,4 +1,7 @@
 import {moduleName, FishingUi} from "./fishingUi.mjs";
+import {FishingSpotsLayer} from "./fishingCanvasLayer.mjs";
+import {injectFishing} from "./Injection.mjs";
+import {injectControls} from "./toolbar.mjs";
 
 Hooks.on('devModeReady', ({registerPackageDebugFlag}) => registerPackageDebugFlag(moduleName));
 
@@ -13,7 +16,12 @@ export function log(force, ...args) {
 }
 
 Hooks.once('init', async function() {
-  game.keybindings.register(moduleName, "reel", {
+  CONFIG.Canvas.layers["myLayer"] = {
+    layerClass: FishingSpotsLayer,
+    group: "interface"
+  };
+
+  game.keybindings.register(moduleName, "reel.me", {
     name: "Reel in",
     hint: "Tap or hold",
     editable: [
@@ -34,6 +42,17 @@ Hooks.once('ready', async function() {
   window.obligatoryFishingMinigame.log = log;
 
   if (game.modules.get('_dev-mode')?.api?.getPackageDebugValue(moduleName)) {
-    FishingUi.run();
+    // FishingUi.run();
   }
+
 });
+
+Hooks.on('setup', async () => {
+  console.log("injecting");
+  injectFishing();
+})
+
+Hooks.on('getSceneControlButtons', (controls) => {
+  if (!game.user.isGM) return
+  injectControls(controls);
+})
