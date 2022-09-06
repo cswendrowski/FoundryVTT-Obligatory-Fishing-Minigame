@@ -1,4 +1,5 @@
 import {moduleName, FishingUi} from "./fishingUi.mjs";
+import FishingSpotPageSheet from "./journal/fishingSpotPageSheet.mjs";
 
 Hooks.on('devModeReady', ({registerPackageDebugFlag}) => registerPackageDebugFlag(moduleName));
 
@@ -24,6 +25,13 @@ Hooks.once('init', async function() {
     reservedModifiers: [],
     precedence: CONST.KEYBINDING_PRECEDENCE.PRIORITY,
     repeat: true
+  });
+
+  DocumentSheetConfig.registerSheet(JournalEntryPage, moduleName, FishingSpotPageSheet, {
+    types: ["text"],
+    label() {
+      return "Fishing Spot Configuration";
+    }
   });
 });
 

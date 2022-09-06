@@ -1,0 +1,45 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    {{> journalEntryPageHeader}}
+
+
+<!--        <div class="edit-image">-->
+<!--            <label>Image</label>-->
+<!--            <div data-edit="image" contenteditable="true">{{image}}</div>-->
+<!--        </div>-->
+    <div class="form-group picker">
+        <label>Image</label>
+        <div class="form-fields">
+            {{filePicker target="image" type="image"}}
+            <input class="image" type="text" name="image" placeholder="path/image.png" value="{{image}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="edit-description">
+            <label>Description</label>
+            <input type="text" name="description" value="{{description}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div data-table-id="{{fishRolltableUUID}}">
+            <label>Fish Table</label>
+            <input type="text" name="fishRolltableUUID" value="{{fishRolltableUUID}}"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <div data-table-id="{{junkRolltableUUID}}">
+            <label>Junk Table</label>
+            <input type="text" name="junkRolltableUUID" value="{{junkRolltableUUID}}"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <div data-table-id="{{treasureRolltableUUID}}">
+            <label>Treasure Table</label>
+            <input type="text" name="treasureRolltableUUID" value="{{treasureRolltableUUID}}"></input>
+        </div>
+    </div>
+
+
+    {{> journalEntryPageFooter}}
+</form>

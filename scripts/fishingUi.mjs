@@ -3,13 +3,8 @@ export const moduleName = "obligatory-fishing-minigame";
 export class FishingUi {
   static app = null;
 
-  static run() {
-    if ( this.app === null ) {
-      this.app = new FishingApplication();
-    } else {
-      this.app.reset();
-    }
-
+  static run(callback=()=>{}) {
+    this.app = new FishingApplication(callback, {});
     this.app.render(true);
   }
 }
@@ -18,8 +13,10 @@ export class FishingUi {
 
 class FishingApplication extends Application {
 
-  constructor(options) {
+  constructor(callback, options) {
     super(options);
+
+    this.callback = callback;
 
     // Settings data
     this.fish = {
@@ -36,6 +33,23 @@ class FishingApplication extends Application {
       progressPenalty: 3, // Progress loss percentage per interval
       progressUpdateRate: 200, // Progress bar update rate
       progressUpdated: false
+    }
+
+    // adjust for PC
+    if ( game.user.character ) {
+      const str = game.user.character.system.abilities.str.mod; // Catch faster
+      const con = game.user.character.system.abilities.con.mod; // Lose progress slower
+      const int = game.user.character.system.abilities.int.mod; // Increased chance of treasure
+      const wis = game.user.character.system.abilities.wis.mod; // Speed of fish is reduced
+      const cha = game.user.character.system.abilities.cha.mod; // How far the fish jumps is reduced
+      const dex = game.user.character.system.abilities.dex.mod; // The fish moves less often
+
+      // Mod values range from -2 to +5
+      this.rod.progress = this.rod.progress + str;
+      this.rod.progressPenalty = Math.min(0.5, this.rod.progressPenalty - (con * 0.5));
+      this.fish.speed -= wis * 100;
+      this.fish.jumpRange -= cha * 5;
+      this.fish.movepremsec += dex * 200;
     }
 
     // Setup timers
@@ -203,6 +217,8 @@ class FishingApplication extends Application {
   /* -------------------------------------------- */
   fishCaught() {
     ui.notifications.info("Fish Caught!");
+    this.callback();
     this.reset();
+    this.close();
   }
 }
