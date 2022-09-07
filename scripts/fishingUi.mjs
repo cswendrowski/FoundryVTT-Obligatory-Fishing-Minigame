@@ -1,3 +1,5 @@
+import {systemShim} from "./systemShims/theRealShimShady.mjs";
+
 export const moduleName = "obligatory-fishing-minigame";
 
 export class FishingUi {
@@ -30,26 +32,22 @@ class FishingApplication extends Application {
       reelPower: 10, // Bait move speed. Higher = easier
       baitWeight: 1, // Bait weight. Lower = Faster
       progress: 2, // Progress gain percentage per interval
-      progressPenalty: 3, // Progress loss percentage per interval
+      progressPenalty: 1, // Progress loss percentage per interval
       progressUpdateRate: 200, // Progress bar update rate
       progressUpdated: false
     }
 
     // adjust for PC
     if ( game.user.character ) {
-      const str = game.user.character.system.abilities.str.mod; // Catch faster
-      const con = game.user.character.system.abilities.con.mod; // Lose progress slower
-      const int = game.user.character.system.abilities.int.mod; // Increased chance of treasure
-      const wis = game.user.character.system.abilities.wis.mod; // Speed of fish is reduced
-      const cha = game.user.character.system.abilities.cha.mod; // How far the fish jumps is reduced
-      const dex = game.user.character.system.abilities.dex.mod; // The fish moves less often
-
-      // Mod values range from -2 to +5
-      this.rod.progress = this.rod.progress + str;
-      this.rod.progressPenalty = Math.min(0.5, this.rod.progressPenalty - (con * 0.5));
-      this.fish.speed -= wis * 100;
-      this.fish.jumpRange -= cha * 5;
-      this.fish.movepremsec += dex * 200;
+      const shim = systemShim(game.user.character);
+      if (shim) {
+        // Mod values tend to range from -2 to +5
+        this.rod.progress = Math.min(15, this.rod.progress + shim.str);
+        this.rod.baitWeight = Math.max(0.5, this.rod.baitWeight - (shim.con * 0.1));
+        this.fish.speed = Math.min(1500, this.fish.speed + (shim.wis * 100));
+        this.fish.jumpRange = Math.min(50, this.fish.jumpRange - (shim.cha * 5));
+        this.fish.movepremsec = Math.min(2000, this.fish.movepremsec + (shim.dex * 200));
+      }
     }
 
     // Setup timers

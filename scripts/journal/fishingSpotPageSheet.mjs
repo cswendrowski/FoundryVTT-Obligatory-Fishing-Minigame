@@ -1,10 +1,11 @@
 import {FishingUi, moduleName} from "../fishingUi.mjs";
+import {systemShim} from "../systemShims/theRealShimShady.mjs";
 
 export default class FishingSpotPageSheet extends JournalPageSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     const options = super.defaultOptions;
-    options.classes.push("quest");
+    options.classes.push("form");
     return options;
   }
 
@@ -40,7 +41,6 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
     if ( !flagData ) {
       flagData = {
         name: "Fishing Spot",
-        description: "A fishing spot",
         image: "",
         fishRolltableUUID: "",
         junkRolltableUUID: "",
@@ -50,7 +50,7 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
 
     // Metadata
     data.name = flagData.name;
-    data.description = flagData.description;
+    data.text = data.document.text;
     data.image = flagData.image;
     data.fishRolltableUUID = flagData.fishRolltableUUID;
     data.junkRolltableUUID = flagData.junkRolltableUUID;
@@ -62,6 +62,7 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
     data.treasureRolltable = this._getRolltable(flagData.treasureRolltableUUID);
 
     this.data = data;
+    console.dir(data);
 
     return data;
   }
@@ -69,11 +70,11 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
   /* -------------------------------------------- */
 
   async _updateObject(event, formData) {
-    const updateData = {
+    const updateData = foundry.utils.mergeObject(formData, {
       "flags": {
         [moduleName]: formData
       }
-    };
+    });
     return super._updateObject(event, updateData);
   }
 
@@ -81,6 +82,7 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
 
   /** @inheritDoc */
   activateListeners(html) {
+    super.activateListeners(html);
     html.find(".fishing-spot-fish").click(() => {
       FishingUi.run(() => {
         this._fishCaught();
@@ -94,7 +96,7 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
     let id = this.data.fishRolltableUUID;
     // A random number from 1 to 100
     let random = Math.floor(Math.random() * 100) + 1;
-    if ( game.user.character ) random += game.user.character.system.abilities.int.mod;
+    if ( game.user.character ) random += systemShim(game.user.character).int;
     if ( random <= 10 ) {
       id = this.data.junkRolltableUUID;
     }

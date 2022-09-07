@@ -1,26 +1,6 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
     {{> journalEntryPageHeader}}
 
-
-<!--        <div class="edit-image">-->
-<!--            <label>Image</label>-->
-<!--            <div data-edit="image" contenteditable="true">{{image}}</div>-->
-<!--        </div>-->
-    <div class="form-group picker">
-        <label>Image</label>
-        <div class="form-fields">
-            {{filePicker target="image" type="image"}}
-            <input class="image" type="text" name="image" placeholder="path/image.png" value="{{image}}">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="edit-description">
-            <label>Description</label>
-            <input type="text" name="description" value="{{description}}">
-        </div>
-    </div>
-
     <div class="form-group">
         <div data-table-id="{{fishRolltableUUID}}">
             <label>Fish Table</label>
@@ -39,6 +19,9 @@
             <input type="text" name="treasureRolltableUUID" value="{{treasureRolltableUUID}}"></input>
         </div>
     </div>
+
+    {{editor document.text.content target="text.content" button=false editable=true
+    engine="prosemirror" collaborate="false"}}
 
 
     {{> journalEntryPageFooter}}
