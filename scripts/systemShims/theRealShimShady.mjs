@@ -7,7 +7,7 @@ export function systemShim(character) {
   switch ( system ) {
     case "dnd5e": return new Dnd5eShim(character);
     case "pf2e": return new Pf2eShim(character);
-    case "13a": return new ThirteenthAgeShim(character);
+    case "archmage": return new ThirteenthAgeShim(character);
     default: return null;
   }
 }

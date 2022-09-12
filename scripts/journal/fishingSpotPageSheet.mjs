@@ -84,19 +84,30 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".fishing-spot-fish").click(() => {
-      FishingUi.run(() => {
-        this._fishCaught();
+      FishingUi.run((isCodEmperor) => {
+        this._fishCaught(isCodEmperor);
       });
     });
   }
 
   /* -------------------------------------------- */
 
-  async _fishCaught() {
+  async _fishCaught(isCodEmperor) {
+    if ( isCodEmperor ) {
+      ChatMessage.create({
+        content: `<h2>${game.user.name} has captured the mythical Cod-Emperor</h2>
+                  <img src="/modules/${moduleName}/images/cod-emperor.png" width="200" height="200" />
+                  <p>Fortunes will shine upon you for the rest of your fishing days.</p>`,
+      });
+      return;
+    }
+    ui.notifications.info("Fish Caught!");
+
     let id = this.data.fishRolltableUUID;
     // A random number from 1 to 100
     let random = Math.floor(Math.random() * 100) + 1;
-    if ( game.user.character ) random += systemShim(game.user.character).int;
+    const shim = systemShim(game.user.character);
+    if ( shim && game.user.character ) random += shim.int;
     if ( random <= 10 ) {
       id = this.data.junkRolltableUUID;
     }

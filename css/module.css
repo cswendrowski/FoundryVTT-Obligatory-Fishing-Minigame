@@ -1,25 +1,25 @@
 .fishing-ui .dialog-buttons {
-  display: none; }
-
+  display: none;
+}
 .fishing-ui .window-app {
-  width: 150px !important; }
-
+  width: 150px !important;
+}
 .fishing-ui .window-content {
-  background: none !important; }
-
+  background: none !important;
+}
 .fishing-ui .fishing {
   position: absolute;
   width: 121px;
   height: 500px;
-  border-radius: 10px; }
-
+  border-radius: 10px;
+}
 .fishing-ui .fishing .rod {
   width: 20px;
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0; }
-
+  left: 0;
+}
 .fishing-ui .fishing .rod:before {
   content: "";
   width: 3px;
@@ -27,37 +27,37 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: #adb5bd;
-  background: repeating-linear-gradient(0deg, #adb5bd 25px, #6c757d 50px, #adb5bd 75px);
+  background: rgb(173, 181, 189);
+  background: repeating-linear-gradient(0deg, rgb(173, 181, 189) 25px, rgb(108, 117, 125) 50px, rgb(173, 181, 189) 75px);
   border: 1px solid #212529;
-  border-radius: 5px; }
-
+  border-radius: 5px;
+}
 .fishing-ui .fishing .rod:after {
   content: "";
   position: absolute;
   bottom: 0;
   width: 8px;
   height: 50px;
-  background: #cd9879;
-  background: repeating-linear-gradient(0deg, #f77f00 0px, #f77f00 2px, #9e5c42 4px, #f77f00 6px, #f77f00 9px);
+  background: rgb(205, 152, 121);
+  background: repeating-linear-gradient(0deg, rgb(247, 127, 0) 0px, rgb(247, 127, 0) 2px, rgb(158, 92, 66) 4px, rgb(247, 127, 0) 6px, rgb(247, 127, 0) 9px);
   border: 2px solid #9e5c42;
   bottom: -3px;
   right: -3px;
   border-radius: 5px;
-  box-shadow: -3px 4px 14px -4px, inset 2px -2px rgba(0, 0, 0, 0.2); }
-
+  box-shadow: -3px 4px 14px -4px, inset 2px -2px rgba(0, 0, 0, 0.2);
+}
 .fishing-ui .fishing .rod .reel {
   position: absolute;
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  background: #ab4d0b;
-  background: linear-gradient(28deg, #ab4d0b 0%, #ff9d58 100%);
+  background: rgb(171, 77, 11);
+  background: linear-gradient(28deg, rgb(171, 77, 11) 0%, rgb(255, 157, 88) 100%);
   bottom: 30px;
   z-index: 2;
   box-shadow: -3px 4px 14px -4px, inset 2px -2px rgba(0, 0, 0, 0.2);
-  border: 1px solid #67300a; }
-
+  border: 1px solid #67300a;
+}
 .fishing-ui .fishing .rod .reel .handle {
   content: "";
   position: absolute;
@@ -66,64 +66,66 @@
   border: 1px solid black;
   top: -9px;
   right: 9px;
-  background: #adb5bd;
-  background: linear-gradient(0deg, #adb5bd 0%, #6c757d 81%, #a4161a 86%, #a4161a 100%);
+  background: rgb(173, 181, 189);
+  background: linear-gradient(0deg, rgb(173, 181, 189) 0%, rgb(108, 117, 125) 81%, rgb(164, 22, 26) 86%, rgb(164, 22, 26) 100%);
   border-radius: 3px;
   transform-origin: bottom;
   animation-name: reelin;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  animation-play-state: paused; }
-
+  animation-play-state: paused;
+}
 @keyframes reelin {
   from {
-    transform: rotate(360deg); }
+    transform: rotate(360deg);
+  }
   to {
-    transform: rotate(0deg); } }
-
+    transform: rotate(0deg);
+  }
+}
 .fishing-ui .fishing .rod .reel .handle.reelin {
-  animation-play-state: running; }
-
+  animation-play-state: running;
+}
 .fishing-ui .fishing .rod .reel .handle.reelout {
   animation-duration: 0.5s;
   animation-direction: reverse;
-  animation-play-state: running; }
-
+  animation-play-state: running;
+}
 .fishing-ui .fishing .sea {
   position: absolute;
   width: 60px;
   height: 100%;
-  background: #f77f00;
-  background: repeating-linear-gradient(0deg, #f77f00 0px, #f77f00 50px, #ffa649 52px, #774936 56px, #774936 57px, #f77f00 61px, #f77f00 100px);
+  background: rgb(247, 127, 0);
+  background: repeating-linear-gradient(0deg, rgb(247, 127, 0) 0px, rgb(247, 127, 0) 50px, rgb(255, 166, 73) 52px, rgb(119, 73, 54) 56px, rgb(119, 73, 54) 57px, rgb(247, 127, 0) 61px, rgb(247, 127, 0) 100px);
   left: 30px;
   border-radius: 10px;
   border: 2px solid #774936;
   box-shadow: inset -2px -2px rgba(0, 0, 0, 0.3);
   padding: 10px;
-  box-sizing: border-box; }
-
+  box-sizing: border-box;
+}
 .fishing-ui .fishing .sea:before {
   content: "";
   position: absolute;
   width: 15px;
   height: 100%;
-  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 5px, #565554 6px, #131515 9px, #565554 9px, rgba(255, 255, 255, 0) 11px, rgba(255, 255, 255, 0) 34px);
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0) 0px, rgba(255, 255, 255, 0) 5px, rgb(86, 85, 84) 6px, rgb(19, 21, 21) 9px, rgb(86, 85, 84) 9px, rgba(255, 255, 255, 0) 11px, rgba(255, 255, 255, 0) 34px);
   top: 0;
   left: -12px;
-  z-index: -1; }
-
+  z-index: -1;
+}
 .fishing-ui .fishing .sea .area {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background: #8ecae6;
-  background: linear-gradient(180deg, #8ecae6 0%, #219ebc 100%);
+  background: rgb(142, 202, 230);
+  background: linear-gradient(180deg, rgb(142, 202, 230) 0%, rgb(33, 158, 188) 100%);
   box-shadow: inset -3px 3px rgba(0, 0, 0, 0.3);
   border: 2px solid #774936;
-  box-sizing: border-box; }
-
+  box-sizing: border-box;
+}
 .fishing-ui .fishing .sea .fish {
   width: 100%;
   height: 50px;
@@ -135,8 +137,14 @@
   line-height: 50px;
   text-align: center;
   color: #264653;
-  text-shadow: 1px 1px #2a9d8f; }
-
+  text-shadow: 1px 1px #2a9d8f;
+}
+.fishing-ui .fishing .sea .fish.cod-emperor {
+  color: goldenrod;
+  text-shadow: 1px 1px darkgoldenrod;
+  font-size: 35px;
+  right: 3px;
+}
 .fishing-ui .fishing .sea .bait {
   position: absolute;
   width: 100%;
@@ -145,8 +153,8 @@
   left: 0;
   background: #beee62;
   border-radius: 10px;
-  box-shadow: inset 0 0 1px 3px #70ae6e; }
-
+  box-shadow: inset 0 0 1px 3px #70ae6e;
+}
 .fishing-ui .fishing .progress {
   position: absolute;
   width: 30px;
@@ -157,18 +165,18 @@
   top: 0;
   border-radius: 10px;
   padding: 3px;
-  box-sizing: border-box; }
-
+  box-sizing: border-box;
+}
 .fishing-ui .fishing .progress .area {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #733938;
-  background: linear-gradient(90deg, #733938 0%, #9e5c42 2%, #6f3b2e 36%, #733938 96%, #4a2221 100%);
+  background: rgb(115, 57, 56);
+  background: linear-gradient(90deg, rgb(115, 57, 56) 0%, rgb(158, 92, 66) 2%, rgb(111, 59, 46) 36%, rgb(115, 57, 56) 96%, rgb(74, 34, 33) 100%);
   border-radius: 10px;
   box-shadow: inset 3px 3px rgba(0, 0, 0, 0.4);
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 .fishing-ui .fishing .progress .bar {
   position: absolute;
   width: 100%;
@@ -176,9 +184,10 @@
   background: #beee62;
   bottom: 0;
   box-shadow: inset 2px -2px rgba(0, 0, 0, 0.4);
-  border-radius: 0 0 10px 10px; }
-
+  border-radius: 0 0 10px 10px;
+}
 .fishing-ui .holdButtonProgress {
-  display: none; }
+  display: none;
+}
 
 /*# sourceMappingURL=module.css.map */

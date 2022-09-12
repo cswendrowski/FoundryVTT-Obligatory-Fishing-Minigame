@@ -186,6 +186,11 @@
     text-align: center;
     color: #264653;
     text-shadow: 1px 1px #2a9d8f;
+
+    &.cod-emperor {
+      color: goldenrod;
+      text-shadow: darkgoldenrod;
+    }
   }
   .fishing .sea .bait {
     position: absolute;

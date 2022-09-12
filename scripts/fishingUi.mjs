@@ -25,22 +25,34 @@ class FishingApplication extends Application {
       jumpRange: 100, // Jumping range, between 0-100, lower means less movement
       speed: 1000, // Movement speed in ms
       depth: 20, // Spawn starting percentage
-      movepremsec: 1500 // How often the Fish changes position
+      movepremsec: 1500, // How often the Fish changes position
+      codEmperor: false, // Is the fish the mythical Cod Emperor?
     };
     this.rod = {
       reeling: false,
       reelPower: 10, // Bait move speed. Higher = easier
       baitWeight: 1, // Bait weight. Lower = Faster
       progress: 2, // Progress gain percentage per interval
-      progressPenalty: 1, // Progress loss percentage per interval
+      progressPenalty: 0, // Progress loss percentage per interval
       progressUpdateRate: 200, // Progress bar update rate
       progressUpdated: false
+    }
+
+    // Is this the mythical Cod Emperor?
+    const result = Math.floor(Math.random() * 1002) + 1;
+    if (result === 1002) {
+      this.fish.speed = 500;
+      this.fish.movepremsec = 2000;
+      this.rod.progress = 1;
+      this.rod.progressPenalty = 2;
+      this.fish.codEmperor = true;
+      ui.notifications.warn("You have encountered the mythical Cod Emperor - prepare for a fight!");
     }
 
     // adjust for PC
     if ( game.user.character ) {
       const shim = systemShim(game.user.character);
-      if (shim) {
+      if ( shim ) {
         // Mod values tend to range from -2 to +5
         this.rod.progress = Math.min(15, this.rod.progress + shim.str);
         this.rod.baitWeight = Math.max(0.5, this.rod.baitWeight - (shim.con * 0.1));
@@ -82,6 +94,9 @@ class FishingApplication extends Application {
 
     // Move fish
     this.moveFishTimer = setInterval(() => {
+      if ( this.fish.codEmperor ) {
+        $(".fish")[0].classList.add("cod-emperor");
+      }
       let currentposition = parseInt($(".fishing .sea .fish")[0].style.top);
       let movedirection =
         Math.floor(Math.random() * currentposition) +
@@ -214,8 +229,7 @@ class FishingApplication extends Application {
 
   /* -------------------------------------------- */
   fishCaught() {
-    ui.notifications.info("Fish Caught!");
-    this.callback();
+    this.callback(this.fish.codEmperor);
     this.reset();
     this.close();
   }
