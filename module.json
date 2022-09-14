@@ -43,6 +43,11 @@
       "path": "languages/en.json"
     }
   ],
+  "flags": {
+    "fvttdevleague": {
+        "package-jam": 2022
+    }
+  },
   "url": "This is auto replaced",
   "manifest": "This is auto replaced",
   "download": "This is auto replaced",
