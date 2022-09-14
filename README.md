@@ -28,9 +28,11 @@ Need some fish? https://foundryvtt.com/packages/1000-fish
 
 ## Ability score impacts
 
+```
 STR - Catch Faster
 CON - Lose progress slower
 INT - Higher treasure chance
 WIS - Speed of fish is reduced
 CHA - How far the fish jumps is reduced
 DEX - Fish moves less often
+```
