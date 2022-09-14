@@ -15,6 +15,8 @@ Every game has one.
 Setup fishing spots, reel in fish with an interactive minigame, and get a chance to get treasure (or junk).
 OFM understands many popular game systems, adding support so that your fishing experience changes based on your character's ability scores for the ultimate RPG experience.
 
+Need some fish? https://foundryvtt.com/packages/1000-fish
+
 ![obligatory fishing minigame](https://user-images.githubusercontent.com/15639841/190035889-65905398-4c9b-4e82-be5b-680c1ef47a16.gif)
 
 
