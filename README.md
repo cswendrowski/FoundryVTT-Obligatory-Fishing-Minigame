@@ -36,3 +36,14 @@ WIS - Speed of fish is reduced
 CHA - How far the fish jumps is reduced
 DEX - Fish moves less often
 ```
+
+## Instructions for use
+1) Open a Journal, create a new text page 
+![](https://cdn.discordapp.com/attachments/844326366979948544/1019658157934526485/unknown.png)
+2) Edit the sheet for the page to "Fishing Spot Configuration"
+![](https://media.discordapp.net/attachments/844326366979948544/1019658469416124547/unknown.png)
+![](https://media.discordapp.net/attachments/844326366979948544/1019658526244737205/unknown.png)
+3) Set ID's to rolltables for each of the 3 fields
+![](https://media.discordapp.net/attachments/844326366979948544/1019658662492508190/unknown.png)
+4) Save, and you should see a "Start Fishing" button rendered on the view
+![](https://media.discordapp.net/attachments/844326366979948544/1019658937081004083/unknown.png)
