@@ -20,8 +20,14 @@ Hooks.once('init', async function() {
     editable: [
       {key: "Space"}
     ],
-    onDown: () => { window.obligatoryFishingMinigame.reeling = true; return true; },
-    onUp: () => { window.obligatoryFishingMinigame.reeling = false; return true; },
+    onDown: () => { 
+      window.obligatoryFishingMinigame.reeling = true;
+      return !!FishingUi.app?.rendered;
+    },
+    onUp: () => {
+      window.obligatoryFishingMinigame.reeling = false;
+      return !!FishingUi.app?.rendered;
+    },
     reservedModifiers: [],
     precedence: CONST.KEYBINDING_PRECEDENCE.PRIORITY,
     repeat: true
