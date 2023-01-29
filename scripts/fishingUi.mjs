@@ -185,7 +185,7 @@ class FishingApplication extends Application {
       .animate(
         {top: "79%"},
         {
-          duration: parseInt(app.rod.baitWeight) * 1000,
+          duration: parseFloat(app.rod.baitWeight) * 1000,
           complete: function () {
             $(".fishing .rod .reel .handle").removeClass("reelout");
           },

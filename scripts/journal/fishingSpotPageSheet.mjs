@@ -112,7 +112,7 @@ export default class FishingSpotPageSheet extends JournalPageSheet {
       id = this.data.junkRolltableUUID;
     }
     else if ( random >= 90 ) {
-      id = this.data.junkRolltableUUID;
+      id = this.data.treasureRolltableUUID;
     }
     const rolltable = this._getRolltable(id);
     if (rolltable) {
